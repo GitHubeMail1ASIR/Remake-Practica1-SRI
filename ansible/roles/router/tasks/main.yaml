@@ -1,0 +1,14 @@
+- name: "Cambiar el bit de forwarding"
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: "1"
+    state: present
+    reload: yes
+
+- name: "Cambiar la red del router"
+  template:
+    src: interfaces
+    dest: /etc/network/interfaces
+    mode: 0644
+  notify: reinicio
+  become: yes

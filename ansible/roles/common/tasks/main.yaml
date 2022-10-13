@@ -1,0 +1,12 @@
+- name: "Actualizar la paquetería"
+  apt:
+    update_cache: yes
+    upgrade: dist
+  become: yes
+
+- name: "Agregar la clave ssh pública del host al authorized keys de las máquinas"
+  authorized_key:
+    user: vagrant
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    state: present
+  become: yes

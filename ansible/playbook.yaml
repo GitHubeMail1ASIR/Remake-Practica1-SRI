@@ -1,0 +1,18 @@
+- hosts: all
+  roles:
+    - common
+
+- hosts: router
+  roles:
+    - router
+  become: yes
+
+- hosts: clientes
+  roles:
+    - cliente
+  become: yes
+
+- hosts: clientes
+  roles:
+    - web
+  become: yes

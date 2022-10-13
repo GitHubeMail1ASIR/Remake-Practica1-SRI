@@ -1,0 +1,8 @@
+- name: "Cambiar la red del cliente"
+  template:
+    src: interfaces
+    dest: /etc/network/interfaces
+    mode: 0644
+  become: yes
+  notify:
+    - reinicio
